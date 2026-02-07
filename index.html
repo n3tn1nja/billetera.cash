@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Billetera para Bitcoin Cash &raquo; Efectivo Electrónico sin límites</title>
+  <meta name="description"
+    content="Billetera es una billetera Bitcoin Cash (BCH) no custodial gratis, simple y segura, que te permite enviar y recibir BCH fácilmente. Soporte exclusivo para BitcoinCash (BCH).">
+  <meta name="keywords"
+    content="BitcoinCash, BCH, Billetera, No Custodial, Enviar, Pagar, Recibir, Criptomonedas, Crypto, cryptocurrency">
+  <meta name="author" content="Equipo Billetera">
+
+  <meta property="og:title" content="Billetera para BitcoinCash &raquo; Efectivo Electrónico sin límites">
+  <meta property="og:description"
+    content="Billetera es una billetera BitcoinCash gratis, simple y segura, que te permite enviar y recibir BCH fácilmente. Soporte exclusivo para BitcoinCash (BCH).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://billetera.cash">
+  <meta property="og:image" content="https://billetera.cash/assets/img/thumbnail.png">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Billetera">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Billetera para BitcoinCash (BCH) &raquo; Efectivo Electrónico sin límites">
+  <meta name="twitter:description"
+    content="Billetera es una billetera BitcoinCash (BCH) no custodial simple y segura, que te permite enviar y recibir BCH fácilmente. Soporte exclusivo para BitcoinCash (BCH).">
+  <meta name="twitter:image" content="https://billetera.cash/assets/img/thumbnail.png">
+
+  <!-- Favicons -->
+  <link href="assets/img/bitcoin-cash-circle-icon-192.png" rel="icon">
+  <link href="assets/img/bitcoin-cash-circle-icon-192.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/box-icons/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/remix-icons/remixicon.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <script src="assets/js/indexeddb-storage-2.3.13.js"></script>
+  <script src="assets/js/mainnet-2.3.13.js"></script>
+
+  <link href="assets/css/simple-datatables.css" rel="stylesheet">
+  <script src="assets/js/simple-datatables.js"></script>
+  <script src="constants.js"></script>
+  <script src="main.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CK7CSZYQPF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag () { dataLayer.push( arguments ); }
+    gtag( 'js', new Date() );
+
+    gtag( 'config', 'G-CK7CSZYQPF' );
+  </script>
+</head>
+
+<body>
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Billetera</span>
+      </a>
+    </div>
+  </header>
+  <main id="main" class="main">
+    <!-- if "isnew" = true this container will be displayed -->
+    <div class="container">
+      <img id="beaneater" src="assets/img/fluid-loader.gif"
+        style="margin-left: auto;margin-top: auto; margin-right: auto;text-align:center;justify-self:center;" />
+      <div id="newwalletview" class="hide">
+        <fieldset style="margin-top: 25px;">
+          <img src="assets/img/bitcoin-cash-banner.webp"
+            style="width: 45%;display:flex;margin:auto;padding-bottom: 150px;" />
+          <h4><img src="assets/img/bitcoin-cash-circle-icon-192.png" style="width:30px;padding-bottom: 10px"
+              style="width: 35%;display:flex;margin: 25px auto;" /> BitcoinCash -
+            Crear Nueva
+            Billetera</h4>
+          <p>Crear una billetera BitcoinCash (BCH) en nuestra aplicación es rápido, sencillo y 100 % gratuito. No es
+            necesario
+            proporcionar información personal, identificación o información bancaria: usted tiene el control total.
+            Nuestra
+            billetera sin custodia es privada y segura, lo que garantiza que solo usted tenga acceso a sus fondos.
+
+            Sin tarifas ni comisiones, su dinero está seguro. BitcoinCash le permite enviar y recibir dinero al
+            instante, en
+            cualquier lugar y con costos muy bajos.</p>
+          <input class="btn btn-primary" type="button" value="Crear Billetera" onclick="createNewWallet()">
+          <br><br>
+          <hr><br>
+          <h4><img src="assets/img/bitcoin-cash-circle-icon-192.png" style="width:30px;padding-bottom: 10px"
+              style="width: 35%;display:flex;margin: 25px auto;" /> BitcoinCash - Importar
+            Billetera Existente
+          </h4>
+          <p></p>
+          <div>Introduzca la frase semilla mnemotécnica</div>
+          <textarea class="form-control" style="resize: none;width:100%" id="enterSeedphrase" rows="3"
+            placeholder="palabra1 palabra2 palabra3 [...] palabra12"></textarea>
+          <span>Ruta de derivación: </span>
+          <select class="form-control" name="derivationPath" id="derivationPath">
+            <option value="m/44'/145'/0'/0/0">m/44’/145’/0’/0/0 ( billetera estándar HD)</option>
+            <option value="m/44'/0'/0'/0/0">m/44'/0'/0'/0/0 ( billetera bitcoin.com )</option>
+          </select> <br>
+          <input class="btn btn-primary" type="button" style="margin-top:15px" value="Importar Billetera"
+            onclick="importWallet()">
+          <br><br>
+        </fieldset>
+      </div>
+    </div>
+
+    <div id="walletexists" class="hide">
+      <div class="pagetitle">
+        <h1>Billetera personal sin custodia</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="https://bitcoincash.org/es/" target="_blank">BitcoinCash -
+                Efectivo
+                sin control, libertad financieras</a> </li>
+          </ol>
+        </nav>
+        <span style="font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    color: #899bbd;
+    font-weight: 600;" class="breadcrumb-item"></span>
+      </div><!-- End Page Title -->
+
+      <section class="section dashboard">
+        <div class="row">
+
+          <!-- Left side columns -->
+          <div class="col-lg-12">
+            <div class="row">
+              <!-- Deposit Card -->
+              <div class="col-xxl-8 col-xl-8">
+                <div class="card info-card customers-card">
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Menu</h6>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body">
+                    <h5 id="deposit" class="card-title">Dirección <i
+                        style="font-size:18pt;transform: rotate(-0.03turn);" class="ri ri-bit-coin-fill"></i></h5>
+                    <div class="d-flex" style="padding-top:10px;">
+                      <div class="ps-3" style="width:100%;word-wrap:break-word;">
+                        <p style="text-align: center;">
+                          <img src="assets/img/wait.svg" style="width:60%;max-width:15em;" id="depositqr">
+                        </p>
+                        <h3 style="text-align: center;word-wrap:break-word;" id="cashaddr">Cargando
+                          Dirección Bitcoin
+                          Cash...</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Deposit Address Card -->
+              </div>
+              <!-- End Deposit Card -->
+              <div class="col-xl-4 col-md-12 col-sm-12">
+                <!-- Balance Card -->
+
+                <div class="">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 id="balance" class="card-title">Saldo Total <span>| BitcoinCash (BCH) </span></h5>
+                      <div class="d-flex align-items-center">
+                        <div style="transform: rotate(-0.03turn);"
+                          class="success card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-currency-bitcoin"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6 id="bal">Loading...</h6>
+                          <span id="sats" class="text-success small pt-1 fw-bold"></span> <span
+                            class="text-muted small pt-2 ps-1">Satoshis</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- End Balance Card -->
+                <!-- Value Card -->
+                <div class="">
+                  <div class="card info-card revenue-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Valor Total <span>| USD</span></h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>$<span id="balusd"> Cargando...</span></h6>
+                          <span class="text-success small pt-1 fw-bold">1 BCH = $<span id="bchprice"></span> </span>
+                          <span class="text-muted small pt-2 ps-1"></span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- End Value Card -->
+              </div>
+
+
+              <!-- SEND BCH Card -->
+              <div id="send" class="col-xxl-8 col-xl-8">
+                <div id="sendBCHcard" class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Enviar BCH <i style="font-size:18pt;" class="ri ri-secure-payment-fill"></i>
+                      <span> | Efectivo Electrónico </span> <img src="assets/img/fluid-loader.gif" id="loader"
+                        style="display:none;padding-left:100px;width:200px;"><span id="send-error"></span>
+                    </h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="ps-3" style="margin: 0 auto;">
+                        <span style="display:none;" id="txdata"></span>
+
+                        <!-- ADDRESS -->
+                        <form id="sendbchform" class="row g-3 needs-validation was-validated" novalidate>
+                          <div class="col-md-12">
+                            <div class="form-floating">
+                              <input type="text" class="form-control" id="sendtoaddress" required>
+                              <label for="sendtoaddress">Enviar a la dirección</label>
+                              <span id="sendtoaddresserror"></span>
+                              <div class="invalid-feedback">
+                                Por favor ingrese un dirección válido de bitcoincash:...
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- AMOUNT -->
+                          <div class="col-md-12">
+                            <div class="form-floating">
+                              <!-- TODO: Make send-total input readonly and add logic for selecting UTXOs oninput="calcUsd()" -->
+                              <input type="number" class="form-control" id="send-total" name="amount" value=0.001
+                                required oninput="calcUsd()">Valor $<span id="send-totalusd">0.00</span> USD
+                              <br />
+                              <div style="display: none" class="invalid-feedback">
+                                Ingrese una cantidad válida superior a 0 BCH
+                              </div>
+                              <div style="display: none" id="needfunds" class="invalid-feedback">
+                                El saldo del usuario no es suficiente. Envíe más BCH a su dirección de depósito.
+                              </div>
+
+
+                              <br /><input type="checkbox" id="sendmax" name="sendmax" onclick="setSendMax()"> Enviar
+                              Máximo
+
+
+                              <label for="send-total">Monto (BCH)</label>
+
+                            </div>
+                          </div>
+
+                          <button onClick="sendBCH()" type="button" class="btn btn-primary btn-block">Enviar</button>
+                        </form><!-- End floating Labels Form -->
+
+                        <!-- Custom JavaScript for Sending Custom BCH amount -->
+                        <script type="text/javascript">
+                          function resetSendBCHform () {
+                            var resetBtn = document.getElementById( 'resetSendForm' ),
+                              sendtotal = document.getElementById( 'send-total' ),
+                              totalUsd = document.getElementById( 'send-totalusd' ),
+                              sendBCHform = document.getElementById( 'sendbchform' );
+                          }
+                        </script>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- End SEND BCH Card -->
+              </div>
+              <!-- Mnemonic Card -->
+              <div class="col-xxl-8 col-xl-8">
+
+                <div class="card info-card customers-card" id="mnemonic1">
+
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Menu</h6>
+                      </li>
+                      <li id="showMnemonicMenu"><a class="dropdown-item" onClick="showMnemonic()">Mostar
+                          Mnemotécnico</a></li>
+                      <li id="hideMnemonicMenu" style="display:none;"><a class="dropdown-item"
+                          onClick="hideMnemonic()">Ocultar
+                          Mnemotécnico</a></li>
+                      <li><a class="dropdown-item" onClick="hideMnemonicTab()">Ocultar esta pestaña</a></li>
+                      <li><a class="dropdown-item" onClick="showMnemonicTab()">Mostar esta pestaña</a></li>
+                      <li><a class="dropdown-item" onClick="deleteWallet()">Borrar esta billetera </a></li>
+                    </ul>
+                  </div>
+
+                  <div class="card-body" id="theMnemonic">
+                    <h5 class="card-title">Mnemotécnico <i style="font-size:18pt" id="lock" class="bx bxs-lock"></i><i
+                        id="lock-open" style="font-size:18pt;display:none;" class="bx bxs-lock-open"></i><span> | Frase
+                        Semilla</span></h5>
+                    <!-- <br /><a href="https://learnmeabitcoin.com/technical/derivation-paths"
+                      target="_blank">Derivation</a>: <span id="derivation"></span></span> -->
+                    </h5>
+
+                    <div class="d-flex align-items-center">
+
+                      <div class="ps-3">
+                        <h5 id="mnemonic">Loading...</h5>
+                        <hr>
+                        <span class="text-danger small pt-1 fw-bold">ESCRIBA ESTAS PALABRAS DE RECUPERACIÓN EN PAPEL LO
+                          ANTES POSIBLE, NUNCA LAS COMPARTA CON NADIE, ESTOS SON EL ACCESO DE
+                          RECUPERACIÓN A SUS FONDOS. SI PIERDES ESTAS 12 PALABRAS, TUS FONDOS SE HAN IDO. MANTÉNGALO
+                          SEGURO.</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <!-- End Mnemonic Card -->
+
+            </div><!-- End Left side columns -->
+          </div>
+      </section>
+    </div>
+  </main>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
