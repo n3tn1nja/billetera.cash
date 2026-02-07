@@ -2,7 +2,7 @@
 
 **Billetera** is a free, simple, and secure **non-custodial** Bitcoin Cash (BCH) web wallet. Send and receive BCH with full control of your keys—no sign-up, no personal data, no custodian.
 
-🌐 **Live:** [billetera.cash](https://billetera.cash)
+🌐 **Currently Down:** [billetera.cash](https://billetera.cash)
 
 ---
 
@@ -26,27 +26,6 @@
 - **UI:** Bootstrap 5, Bootstrap Icons, simple-datatables
 
 No build step—open `index.html` in a browser or serve the folder with any static server.
-
----
-
-## Running Locally
-
-1. Clone the repo:
-   ```bash
-   git clone git@github.com:n3tn1nja/billetera.cash.git
-   cd billetera.cash
-   ```
-2. Serve the project (e.g. with Python or Node):
-   ```bash
-   # Python 3
-   python3 -m http.server 8000
-
-   # or Node (npx)
-   npx serve .
-   ```
-3. Open `http://localhost:8000` (or the port your server uses).
-
----
 
 ## Project Structure
 
